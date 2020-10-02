@@ -87,8 +87,6 @@ MD_MAX72XX mx = MD_MAX72XX(CS_PIN, MAX_DEVICES);
 
 
 
-
-
 uint8_t scrollDataSource(uint8_t dev, MD_MAX72XX::transformType_t t)
 // Callback function for data that is required for scrolling into the display
 {
@@ -158,8 +156,6 @@ void  no_connection(void)
   newMessageAvailable = 1;
   strcpy(curMessage, "No Internet! ");
   scrollText();
-
-
 }
 void setup()
 {
@@ -213,7 +209,6 @@ void loop()
   // this is our 'wait for incoming subscription packets' busy subloop
   // try to spend your time here
 
-
   
   Adafruit_MQTT_Subscribe *subscription;
   while ((subscription = mqtt.readSubscription(1))) {
@@ -239,8 +234,8 @@ void MQTT_connect() {
     return;
   }
 
-  Serial.print("Connecting to MQTT... ");
-
+  Serial.print("Connecting to MQTT..... ");
+  
   uint8_t retries = 3;
   while ((ret = mqtt.connect()) != 0) { // connect will return 0 for connected
        Serial.println(mqtt.connectErrorString(ret));
@@ -253,6 +248,5 @@ void MQTT_connect() {
          while (1);
        }
   }
-  Serial.println("MQTT Connected!");
+    Serial.println("MQTT Connected!");
 }
-
